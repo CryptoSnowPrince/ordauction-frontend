@@ -10,3 +10,7 @@ export const getWalletConnected = (state) => state.global.connected;
 export const getSignInfo = (state) => state.global.signInfo;
 
 /// auction
+export const getActiveAuctionId = (state) => state.auction.activeAuctionId;
+export const getActiveAuction = (state) => state.auction.activeAuction;
+export const getActiveBids = (state) => state.auction.bids;
+export const getLastAuctionId = (state) => state.auction.lastAuctionId;

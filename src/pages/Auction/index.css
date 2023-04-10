@@ -1,0 +1,53 @@
+.ord-item-title {
+    font-family: 'Londrina Solid';
+    font-size: 68px;
+    margin-bottom: 10px;
+}
+
+.bid-amount-text {
+    /* font-family: "PT Root UI"; */
+    font-weight: 700;
+    font-size: 18px;
+}
+
+.bid-amount {
+    /* font-family: "PT Root UI"; */
+    font-weight: 700;
+    font-size: 32px;
+    margin-bottom: 0!important;
+    margin-top: 3px;
+}
+
+.auction-info-text {
+    /* font-family: "PT Root UI"; */
+    font-weight: 700;
+    font-size: 18px;
+}
+
+.auction-info {
+    /* font-family: "PT Root UI"; */
+    font-weight: 700;
+    font-size: 32px;
+    margin-bottom: 0!important;
+    margin-top: 3px;
+}
+
+.bid-amount-input {
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    width: auto;
+    height: 54px;
+    color: black;
+    border-radius: 12px !important;
+    box-shadow: inset 0px 0px 0px 1px #fff;
+    background-color: white;
+    outline: none !important;
+    box-shadow: none !important;
+    font-family: 'PT Root UI';
+    font-weight: bold;
+    font-size: 25px;
+    transition: all 0.2s ease-in-out;
+    border: none;
+    padding: 0px 16px;
+}

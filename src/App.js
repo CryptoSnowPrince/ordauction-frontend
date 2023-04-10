@@ -102,13 +102,13 @@ function App() {
   }, [signInfo]);
 
   useEffect(() => {
-    const fetchAuctioinData = async () => {
+    const fetchAuctionData = async () => {
       try {
         const params = {
           auctionID: -1
         }
         const res = await axiosPost("/auction/getAuctionData", params);
-        if(res.success && res.data.status === SUCCESS) {
+          if(res.success && res.data.status === SUCCESS) {
           const _result = res.data.result;
           console.log(">>> 1----auction/getAuctionData <<< res=", _result);
           const _auction = {
@@ -134,6 +134,7 @@ function App() {
         console.log("'fetchAuctionData=", err);
       }
     }
+    fetchAuctionData();
   }, [])
 
 

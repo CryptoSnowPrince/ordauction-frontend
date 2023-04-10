@@ -89,6 +89,10 @@ export const axiosGet = async (url) => {
     }
 }
 
+export const getShortAddress = (address, length = 4) => {
+    return address && [address.substr(0, length), address.substr(42 - length, length)].join("...");
+}
+
 export const useShortAddress = (address) => {
-    return address && [address.substr(0, 4), address.substr(38, 4)].join("...");
+    return getShortAddress(address);
 }

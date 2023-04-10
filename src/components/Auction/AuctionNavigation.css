@@ -1,0 +1,38 @@
+.leftArrowCool {
+    -webkit-appearance: none;
+    padding: 0;
+    display: inline-block;
+    width: 2rem;
+    height: 2rem;
+    border: none;
+    background-size: contain;
+    background-repeat: no-repeat;
+    font-size: large;
+    border-radius: 50%;
+    color: #151c3b;
+    background-color: #e9ebf3;
+    font-weight: bold;
+  }
+  
+.rightArrowCool {
+    -webkit-appearance: none;
+    padding: 0;
+    margin-left: 0.3rem;
+    display: inline-block;
+    width: 2rem;
+    height: 2rem;
+    border: none;
+    background-size: contain;
+    background-repeat: no-repeat;
+    font-size: large;
+    color: #151c3b;
+    background-color: #e9ebf3;
+    border-radius: 50%;
+    font-weight: bold;
+}
+
+.leftArrowCool:disabled,
+.rightArrowCool:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}

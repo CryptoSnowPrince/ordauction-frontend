@@ -137,7 +137,7 @@ const Header = () => {
               {notifications && notifications.length > 0 && (<div className="notification-bell">{notifications.length}</div>)}
               <i className="fa fa-bell"/>
             </span>
-            <span className="cursor-pointer hover:bg-[#0003] hover:rounded-3xl w-[32px] h-[32px] text-black flex items-center justify-center" onClick={onClickUser}><i className="fa fa-user"/></span>
+            {/* <span className="cursor-pointer hover:bg-[#0003] hover:rounded-3xl w-[32px] h-[32px] text-black flex items-center justify-center" onClick={onClickUser}><i className="fa fa-user"/></span> */}
             { connected ?
               <Popover className="relative">
                 <Popover.Button>
