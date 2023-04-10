@@ -1,0 +1,23 @@
+.alert-message-success {
+    border-radius: 20px;
+    border: 1px solid #5cb85c;
+    background: #1d1d19;
+    height: 100%;
+    color: #fff;
+}
+  
+.alert-message-warn {
+    border-radius: 20px;
+    border: 1px solid #f0ad4e;
+    background: #1d1d19;
+    height: 100%;
+    color: #fff;
+}
+
+.alert-message-error {
+    border-radius: 20px;
+    border: 1px solid #d9534f;
+    background: #1d1d19;
+    height: 100%;
+    color: #fff;
+}
