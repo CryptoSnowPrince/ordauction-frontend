@@ -21,3 +21,6 @@ export const setActiveAuctionId = action("auction/SET_ACTIVE_AUCTION_ID")();
 export const setActiveAuction = action("auction/SET_ACTIVE_AUCTION")();
 export const setActiveBids = action("auction/SET_ACTIVE_BIDS")();
 export const setLastAuctionId = action("auction/SET_LAST_AUCTION_ID")();
+
+export const setPrevAuctionId = action("auction/SET_PREV_AUCTON_ID")();
+export const setNextAuctionId = action("auction/SET_NEXT_AUCTON_ID")();

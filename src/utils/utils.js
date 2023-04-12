@@ -16,7 +16,7 @@ export function IsMdScreen() {
 }
 
 export const getBTCfromSats = (amount) => {
-    return parseFloat(amount) / 100000000;
+    return parseFloat(amount) / 100000000.0;
 }
 
 export const getDisplayString = (str, subLength1, subLength2) => {

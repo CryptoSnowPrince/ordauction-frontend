@@ -39,24 +39,25 @@ function App() {
     };
   }, [])
 
-  // useEffect(() => {
-  //   const fetchNotifications = async () => {
-  //     if(inscriberId) {
-  //       try {
-  //         const res = await axiosGet(`/users/getNotify?uuid=${inscriberId}`);
-  //         if(res.data.status === SUCCESS) {
-  //           dispatch(actions.setNotifications(res.data.result));
-  //         }
-  //       } catch (err) {
-  //         console.log("error:", err);
-  //       }
-  //     }
-  //   }
-  //   fetchNotifications();
-  // }, [refetch, dispatch, inscriberId]);
-
   useEffect(() => {
-    console.log(">>>>>> fetchUserInfo signInfo=", signInfo)
+    const fetchNotifications = async () => {
+      if(user.address) {
+        try {
+          const res = await axiosGet(`/users/getNotify?ordWallet=${user.address}`);
+          if(res.data.status === SUCCESS) {
+            dispatch(actions.setNotifications(res.data.result));
+          }
+        } catch (err) {
+          console.log("error:", err);
+        }
+      }
+    }
+    fetchNotifications();
+  }, [refetch, dispatch]);
+
+  //// User Info
+  useEffect(() => {
+    // console.log(">>>>>> fetchUserInfo signInfo=", signInfo)
     const fetchUserInfo = async () => {
       try {
         const params = {
@@ -66,9 +67,9 @@ function App() {
           publicKey: user.publicKey,
           signData: signInfo.signedMessage
         }
-        console.log(">>>>>>>>> api/users/setUserInfo params=", params);
+        // console.log(">>>>>>>>> api/users/setUserInfo params=", params);
         const res = await axiosPost("/users/setUserInfo", params);
-        console.log(">>>[result]<<< res=", res);
+        // console.log(">>>[result]<<< res=", res);
         if(res.success && res.data.status === SUCCESS) {
         //   result: {
         //     ordWallet: ordWallet,
@@ -76,7 +77,7 @@ function App() {
         //     btcBalance: balance
         // }, status: SUCCESS, message: "Create Success"
           const _userProfile = res.data.result;
-          console.log(">>> userProfile =", _userProfile);
+          // console.log(">>> userProfile =", _userProfile);
           dispatch(actions.setUserProfile({
             btcAccount: _userProfile.btcAccount,
             btcBalance: _userProfile.btcBalance,
@@ -101,6 +102,7 @@ function App() {
     }
   }, [signInfo]);
 
+  //// Auction Data
   useEffect(() => {
     const fetchAuctionData = async () => {
       try {
@@ -110,7 +112,7 @@ function App() {
         const res = await axiosPost("/auction/getAuctionData", params);
           if(res.success && res.data.status === SUCCESS) {
           const _result = res.data.result;
-          console.log(">>> 1----auction/getAuctionData <<< res=", _result);
+          console.log(">>> App----auction/getAuctionData <<< res=", _result);
           const _auction = {
             auctionId: _result.auctionID,
             inscriptionId: _result.inscriptionID,
@@ -122,8 +124,8 @@ function App() {
             auctionEnd: new Date(_result.endDate).getTime()
           }
           dispatch(actions.setLastAuctionId(_result.auctionID));
-          dispatch(actions.setActiveAuctionId(_result.auctionID));
-          dispatch(actions.setActiveAuction(_auction));
+          // dispatch(actions.setActiveAuctionId(_result.auctionID));
+          // dispatch(actions.setActiveAuction(_auction));
         } else {
           dispatch(actions.setAlertMessage({
             type: ALERT_ERROR,

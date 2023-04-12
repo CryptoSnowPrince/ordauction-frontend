@@ -10,8 +10,8 @@ import { ChevronDownIcon } from "@heroicons/react/20/solid";
 import * as actions from "../../store/actions";
 import * as selectors from "../../store/selectors";
 
-import { axiosGet, axiosPost, setInscriberId, useShortAddress } from "../../utils/utils";
-import { ALERT_ERROR, ALERT_SUCCESS, ALERT_WARN, MESSAGE_LOGIN, SUCCESS } from "../../utils/constants";
+import { axiosGet, axiosPost, getBTCfromSats, setInscriberId, useShortAddress } from "../../utils/utils";
+import { ADMIN_ADDRESS, ALERT_ERROR, ALERT_SUCCESS, ALERT_WARN, MESSAGE_LOGIN, SUCCESS } from "../../utils/constants";
 
 // import NotificationModal from "../Notification/NotificationModal";
 
@@ -34,6 +34,7 @@ const Header = () => {
     const { connect, disconnect, signMessage } = useBitcoinWallet();
     const connected = useSelector(selectors.getWalletConnected);
     const user = useSelector(selectors.getUserState);
+    const isAdmin = user.address == ADMIN_ADDRESS;
     const userProfile = useSelector(selectors.getUserProfile);    
     const shortAddress = useShortAddress(user.address);
 
@@ -82,26 +83,26 @@ const Header = () => {
     const handleClearAll = async (e) => {
       e.preventDefault();
       /// removeNotify
-      // const params = {
-      //   uuid: inscriberId,
-      //   removeAll: true
-      // }
-      // try {
-      //   const res = await axiosPost("/users/removeNotify", params);
-      //   if(res.success && res.data.status === SUCCESS) {
-      //     console.log("Removed all notification successfully!");
-      //     dispatch(actions.setAlertMessage({
-      //       type: ALERT_SUCCESS,
-      //       message: "Removed successfully!"
-      //     }))
-      //   }
-      // } catch(err) {
-      //   console.log("Remove Notify error: ", err);
-      //   dispatch(actions.setAlertMessage({
-      //     type: ALERT_ERROR,
-      //     message: ""
-      //   }))
-      // }
+      const params = {
+        ordWallet: user.address,
+        removeAll: true
+      }
+      try {
+        const res = await axiosPost("/users/removeNotify", params);
+        if(res.success && res.data.status === SUCCESS) {
+          console.log("Removed all notification successfully!");
+          dispatch(actions.setAlertMessage({
+            type: ALERT_SUCCESS,
+            message: "Removed successfully!"
+          }))
+        }
+      } catch(err) {
+        console.log("Remove Notify error: ", err);
+        dispatch(actions.setAlertMessage({
+          type: ALERT_ERROR,
+          message: ""
+        }))
+      }
     }
     const onClickConnect = async (e) => { 
       console.log(">>>>>>>>> onClickConnect <<<<<<<<<<< connected=", connected);
@@ -117,18 +118,23 @@ const Header = () => {
         await disconnect();
     }
 
+    const handleGoToAdmin = () => {
+      navigate("/admin");
+    }
+
     return (
     <header id="myHeader" className="top-0 left-0 flex items-center w-full py-4 bg-white">
       <div className="flex items-center justify-end py-2 px-8 w-full">
         {/* <BreakpointProvider> */}
           <div className="flex items-center justify-between w-full">
-            <div className="lgoo px-0">
+            <div className="lgoo px-0 cursor-pointer" onClick={() => navigate("/")}>
               <img src={logoImg} alt="logo" width="56px"/>
             </div>
           </div>
           <div className="flex flex-row gap-6 text-xl justify-end">
+            {isAdmin ? <div className='pr-4 cursor-pointer underline text-black' onClick={() => handleGoToAdmin()}>admin</div> : ""}
             {connected && <div className="cursor-pointer hover:bg-[#0003] hover:rounded-3xl text-black flex items-center justify-center relative px-4">
-              <i className="fa-brands fa-bitcoin"></i> <span className="pl-2 pb-1">{userProfile.btcBalance}</span>
+              <i className="fa-brands fa-bitcoin"></i> <span className="pl-2 pb-1">{getBTCfromSats(userProfile.btcBalance)}</span>
             </div>}
             {/* <span className="cursor-pointer hover:bg-[#fff3] hover:rounded-3xl w-[32px] h-[32px] flex items-center justify-center"><i className="fab fa-twitter"/></span>
             <span className="cursor-pointer hover:bg-[#fff3] hover:rounded-3xl w-[32px] h-[32px] flex items-center justify-center"><i className="fab fa-discord"/></span> */}
@@ -187,7 +193,7 @@ const Header = () => {
                             </span>
                           </span>
                           <span className="block text-sm text-gray-500">
-                            {userProfile.btcBalance}
+                            {getBTCfromSats(userProfile.btcBalance)}
                           </span>
                         </div>
                       </div>

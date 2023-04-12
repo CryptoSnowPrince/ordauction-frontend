@@ -13,7 +13,9 @@ export const initialState = {
         auctionStart: 0,
         auctionEnd: 0,
     },
-    bids: [],
+    bids: [
+
+    ],
     lastAuctionId: -1
 };
 
@@ -27,8 +29,12 @@ const states = (state = initialState, action) => {
             return {...state, bids: action.payload};
         case getType(actions.setLastAuctionId):
             return {...state, lastAuctionId: action.payload};
+        case getType(actions.setPrevAuctionId):
+            return {...state, activeAuctionId: state.activeAuctionId == 1 ? 1 : state.activeAuctionId - 1};
+        case getType(actions.setNextAuctionId):
+            return {...state, activeAuctionId: state.activeAuctionId == state.lastAuctionId ? state.activeAuctionId : state.activeAuctionId + 1};
         default:
-            return state;        
+            return state;
     }
 }
 
