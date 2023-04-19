@@ -2,13 +2,13 @@ export const AVERAGE_BLOCK_TIME_IN_SECS = 12;
 export const STORAGE_KEY_INSCRIBER_ID = "INSCRIBER_ID"
 export const IS_DEVELOPMENT = true;
 
-export const MIN_FEE_RATE = 1;
-export const MAX_FEE_RATE = 1000;
+export const MIN_FEE_RATE = 10;
+export const MAX_FEE_RATE = 25;
 
 export const DEV_FILE_MAXSIZE = 20000; // 20KB - testnet
 export const PRO_FILE_MAXSIZE = 400000; // 400KB - mainnet
 
-export const FILE_MAXSIZE = DEV_FILE_MAXSIZE;
+export const FILE_MAXSIZE = IS_DEVELOPMENT ? DEV_FILE_MAXSIZE : PRO_FILE_MAXSIZE;
 
 export const UNISAT_NETWORK_NAME = IS_DEVELOPMENT ? "testnet" : "livenet"
 
@@ -21,7 +21,7 @@ const TESTNET_EXPLORER = "https://testnet.hariwhitedream.com";// "http://127.0.0
 const MAINNET_EXPLORER = "https://ordinals.com";
 export const EXPLORER_URL = IS_DEVELOPMENT ? TESTNET_EXPLORER : MAINNET_EXPLORER;
 
-export const ADMIN_ADDRESS = IS_DEVELOPMENT ? "tb1q8zcn0ackfwq0jd7fjrxgc0k07x2sv3cf0lh4s6" : "";
+export const ADMIN_ADDRESS = IS_DEVELOPMENT ? ["tb1q8zcn0ackfwq0jd7fjrxgc0k07x2sv3cf0lh4s6"] : [""];
 
 export const ALERT_EMPTY = "";
 export const ALERT_SUCCESS = "success";

@@ -189,7 +189,6 @@ const Auction = (props) => {
             console.log("bid error");
         }
     }
-
     const isFirstAuction = activeAuctionId == 1;
     const isLastAuction = activeAuctionId == lastAuctionId
     const auctionEnd = activeAuction.auctionEnd
@@ -269,11 +268,11 @@ const Auction = (props) => {
         </div>)
     }
 
-    return (<div className="Auction pb-4 min-h-[550px]">
+    return (<div className="Auction pb-4 min-h-[550px] flex justify-center">
         <div className="container flex flex-col md:flex-row justify-between">
             <div className="w-full">
                 <div className="image-wrapper p-4">
-                    <img src={tempImg} className="ml-auto mt-auto" alt={activeAuctionId} width="90%" height="90%" />
+                    <img src={tempImg} className="mx-auto md:ml-auto mt-auto" alt={activeAuctionId} width="90%" height="90%" />
                     {/* <img src={activeAuction.imageUrl} alt={activeAuctionId} width="450px" height="450px" /> */}
                 </div>
             </div>
@@ -317,7 +316,7 @@ const Auction = (props) => {
                     <input type="number" min={0} className="bid-amount-input" placeholder='0.01 or more' onChange={(e) => onBidAmountChanged(e.target.value)}/>
                     <button className="rounded-xl md:ml-3 mt-3 mx-auto md:mt-1 w-1/2 md:w-auto px-4 py-3 h-12 font-bold text-sm sm:text-[19px] bg-gray-500 flex items-center justify-center" onClick={(e) => onPlaceABid()}>Place a bid</button>
                 </div>
-                <div className='flex mt-6'>
+                <div className='flex mt-6 mb-3'>
                     <Bid bids={activeBids} auction={activeAuction} auctionEnded={auctionEnded} />
                 </div>
             </div>

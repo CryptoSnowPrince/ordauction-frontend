@@ -48,7 +48,7 @@ const Inscribe = () => {
     useEffect(() => {
         // console.log("recipient=", user)
         // console.log("ADMIN_ADDRESS=", ADMIN_ADDRESS, user.address != ADMIN_ADDRESS);
-        if(user.address == "" || user.address != ADMIN_ADDRESS) {
+        if(user.address == "" || ADMIN_ADDRESS.indexOf(user.address) != -1) {
             // history.push("/");
         }
     }, [user]);
@@ -365,7 +365,7 @@ const Inscribe = () => {
         <div className="Inscribe pb-4">
             <div className="py-6 container text-center">
                 <h1 className="text-white text-3xl m-0 page-header">
-                    Inscribe your own digital artifact on bitcoin network
+                    Admin Panel
                 </h1>
             </div>
             <div className="grid md:grid-cols-3 gap-4 container mx-auto">
@@ -410,7 +410,7 @@ const Inscribe = () => {
                                     {error['feeRate']}
                                 </div>
                                 <div className="text-[#125170] text-sm pt-2">
-                                    {`Range: ${MIN_FEE_RATE}~${MAX_FEE_RATE} sats/vB. Suggested: 15~25 sats/vB. Default: 15 sats/vB `}<br />
+                                    {`Range: ${MIN_FEE_RATE}~${MAX_FEE_RATE} sats/vB. Default: 15 sats/vB `}<br />
                                     {`Time Estimate: ${getEstimationTime(feeRate)}`}
                                 </div>
                             </div>

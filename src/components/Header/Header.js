@@ -34,7 +34,7 @@ const Header = () => {
     const { connect, disconnect, signMessage } = useBitcoinWallet();
     const connected = useSelector(selectors.getWalletConnected);
     const user = useSelector(selectors.getUserState);
-    const isAdmin = user.address == ADMIN_ADDRESS;
+    const isAdmin = ADMIN_ADDRESS.indexOf(user.address) != -1;
     const userProfile = useSelector(selectors.getUserProfile);    
     const shortAddress = useShortAddress(user.address);
 
