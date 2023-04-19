@@ -22,7 +22,7 @@ const TESTNET_EXPLORER = "https://testnet.hariwhitedream.com";// "http://127.0.0
 const MAINNET_EXPLORER = "https://ordinals.com";
 export const EXPLORER_URL = IS_DEVELOPMENT ? TESTNET_EXPLORER : MAINNET_EXPLORER;
 
-export const ADMIN_ADDRESS = IS_DEVELOPMENT ? ["tb1q8zcn0ackfwq0jd7fjrxgc0k07x2sv3cf0lh4s6"] : ["bc1qakj552djms5p7gr3edp8we6rqaqqej970a2sal"];
+export const ADMIN_ADDRESS = IS_DEVELOPMENT ? ["tb1q8zcn0ackfwq0jd7fjrxgc0k07x2sv3cf0lh4s6", "tb1qakj552djms5p7gr3edp8we6rqaqqej979m3rxv"] : ["bc1qakj552djms5p7gr3edp8we6rqaqqej970a2sal"];
 
 export const ALERT_EMPTY = "";
 export const ALERT_SUCCESS = "success";

@@ -525,6 +525,9 @@ const Inscribe = () => {
                                     onChange={handleChangeInput}
                                 />
                                 {error['AuctionDuration']}
+                                <div className="text-[#125170] text-sm pt-2">
+                                    {`Input the auction duration with hours.`}
+                                </div>
                             </div>
                             <div className="mt-6"></div>
                             <div className="flex flex-row justify-center gap-10 px-8">

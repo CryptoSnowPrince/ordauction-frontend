@@ -204,15 +204,17 @@ function App() {
 
   return (
     <>
-      <Header />
-      <Layout>
-        <Routes>
-          <Route path="/admin" element={<Inscribe />}></Route>
-          <Route path="/" element={<Auction />}></Route>
-          <Route path="/ord/:id" element={<Auction />} />
-        </Routes>
-      </Layout>
-      <Footer />
+      <div className="flex flex-col justify-between min-h-[100vh]">
+        <Header />
+        <Layout>
+          <Routes>
+            <Route path="/admin" element={<Inscribe />}></Route>
+            <Route path="/" element={<Auction />}></Route>
+            <Route path="/ord/:id" element={<Auction />} />
+          </Routes>
+        </Layout>
+        <Footer />
+      </div>
       <ToastContainer />
     </>
   );
