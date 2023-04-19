@@ -430,7 +430,7 @@ const Inscribe = () => {
                                 </div>
                             </div> */}
                             <div className="mt-6"></div>
-                            <div className="flex flex-row justify-center gap-10 px-8">
+                            <div className="flex flex-row justify-center gap-2 sm:gap-10 px-2 sm:px-8">
                                 <button
                                     className="text-[#fff] bg-[#5ec1f3] hover:bg-[#75c6ef] hover:text-[#10435c] p-3 rounded-md w-full active:bg-[#3bb4f1]"
                                     onClick={(e) => handleEstimateInscribe(e)}
