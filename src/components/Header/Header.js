@@ -133,13 +133,13 @@ const Header = () => {
           </div>
           <div className="flex flex-row gap-2 text-xl justify-end">
             {isAdmin ? <div className='cursor-pointer text-black hover:bg-[#0003] hover:rounded-[32px] px-[10px] border border-[#000] rounded-[32px]' onClick={() => handleGoToAdmin()}>admin</div> : ""}
-            {connected && <div className="hidden sm:block sm:min-w-[145px] cursor-pointer hover:bg-[#0003] hover:rounded-3xl text-black flex items-center justify-center relative px-4">
+            {connected && <div className="hidden sm:flex cursor-pointer hover:bg-[#0003] hover:rounded-3xl text-black flex items-center justify-center relative px-4">
               <i className="fa-brands fa-bitcoin"></i> <span className="pl-2 pb-1">{getBTCfromSats(userProfile.btcBalance)}</span>
             </div>}
             {/* <span className="cursor-pointer hover:bg-[#fff3] hover:rounded-3xl w-[32px] h-[32px] flex items-center justify-center"><i className="fab fa-twitter"/></span>
             <span className="cursor-pointer hover:bg-[#fff3] hover:rounded-3xl w-[32px] h-[32px] flex items-center justify-center"><i className="fab fa-discord"/></span> */}
             {/* <span className="cursor-pointer hover:bg-[#fff3] hover:rounded-3xl w-[32px] h-[32px] flex items-center justify-center"><i className="fa fa-wallet"/></span> */}
-            <span className="hidden sm:block cursor-pointer hover:bg-[#0003] hover:rounded-3xl w-[32px] h-[32px] text-black flex items-center justify-center relative" onClick={onClickBell}>
+            <span className="hidden sm:flex cursor-pointer hover:bg-[#0003] hover:rounded-3xl w-[32px] h-[32px] text-black flex items-center justify-center relative" onClick={onClickBell}>
               {notifications && notifications.length > 0 && (<div className="notification-bell">{notifications.length}</div>)}
               <i className="fa fa-bell"/>
             </span>
@@ -151,7 +151,7 @@ const Header = () => {
                     className="cursor-pointer hover:bg-[#0003] hover:rounded-3xl h-[32px] text-black flex items-center justify-center border rounded-full px-4 border-[#000]"
                   >
                     <i className="fa-solid fa-wallet"></i>
-                    <span className="pl-2 pb-1 hidden sm:block">{shortAddress}</span>
+                    <span className="pl-2 pb-1 hidden sm:flex">{shortAddress}</span>
                     <ChevronDownIcon
                       className={`text-opacity-70 ml-2 h-5 w-5 text-black transition duration-150 ease-in-out group-hover:text-opacity-80`}
                       aria-hidden="true"
@@ -218,7 +218,7 @@ const Header = () => {
                 className="cursor-pointer hover:bg-[#0003] hover:rounded-3xl h-[32px] text-black flex items-center justify-center border rounded-full px-4 border-[#000]"
                 onClick={onClickConnect}
               >
-                <i className="fa-solid fa-wallet"></i><span className="pl-2 pb-1 hidden sm:block">{"Connect"}</span>
+                <i className="fa-solid fa-wallet"></i><span className="pl-2 pb-1 hidden sm:flex">{"Connect"}</span>
               </span>
             }
             {/* <Breakpoint l down>
