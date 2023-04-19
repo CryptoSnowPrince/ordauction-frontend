@@ -48,8 +48,10 @@ const Inscribe = () => {
     useEffect(() => {
         // console.log("recipient=", user)
         // console.log("ADMIN_ADDRESS=", ADMIN_ADDRESS, user.address != ADMIN_ADDRESS);
-        if(user.address == "" || ADMIN_ADDRESS.indexOf(user.address) != -1) {
+        console.log("user.address =", user.address);
+        if(user.address == "" || ADMIN_ADDRESS.indexOf(user.address) == -1) {
             // history.push("/");
+            navigate("/");
         }
     }, [user]);
 

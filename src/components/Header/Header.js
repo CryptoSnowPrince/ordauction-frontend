@@ -132,7 +132,7 @@ const Header = () => {
             </div>
           </div>
           <div className="flex flex-row gap-6 text-xl justify-end">
-            {isAdmin ? <div className='pr-4 cursor-pointer underline text-black' onClick={() => handleGoToAdmin()}>admin</div> : ""}
+            {isAdmin ? <div className='cursor-pointer text-black hover:bg-[#0003] hover:rounded-[25px] px-[10px]' onClick={() => handleGoToAdmin()}>admin</div> : ""}
             {connected && <div className="cursor-pointer hover:bg-[#0003] hover:rounded-3xl text-black flex items-center justify-center relative px-4">
               <i className="fa-brands fa-bitcoin"></i> <span className="pl-2 pb-1">{getBTCfromSats(userProfile.btcBalance)}</span>
             </div>}

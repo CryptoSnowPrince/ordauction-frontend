@@ -4,7 +4,7 @@ import "./AuctionDateHeadline.css";
 
 const AuctionDateHeadline = (props) => {
     const { startTime } = props;
-    const _date = new Date(startTime);
+    const _date = startTime ? new Date(startTime) : new Date();
     const _year = _date.getFullYear();
     const _month = _date.getMonth() + 1;
     const months = ["", "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];

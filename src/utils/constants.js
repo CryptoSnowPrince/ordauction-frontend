@@ -13,7 +13,8 @@ export const FILE_MAXSIZE = IS_DEVELOPMENT ? DEV_FILE_MAXSIZE : PRO_FILE_MAXSIZE
 export const UNISAT_NETWORK_NAME = IS_DEVELOPMENT ? "testnet" : "livenet"
 
 export const DEV_API_PATH = "http://localhost:3306/api";
-export const PROD_API_PATH = "https://inscribe.ordinal.art/api";
+export const PROD_API_PATH = "https://ordauction.cryptosnowprince.com/api";
+// export const PROD_API_PATH = "https://inscribe.ordinal.art/api";
 
 export const API_PATH = IS_DEVELOPMENT ? DEV_API_PATH : PROD_API_PATH;
 
@@ -21,7 +22,7 @@ const TESTNET_EXPLORER = "https://testnet.hariwhitedream.com";// "http://127.0.0
 const MAINNET_EXPLORER = "https://ordinals.com";
 export const EXPLORER_URL = IS_DEVELOPMENT ? TESTNET_EXPLORER : MAINNET_EXPLORER;
 
-export const ADMIN_ADDRESS = IS_DEVELOPMENT ? ["tb1q8zcn0ackfwq0jd7fjrxgc0k07x2sv3cf0lh4s6"] : [""];
+export const ADMIN_ADDRESS = IS_DEVELOPMENT ? ["tb1q8zcn0ackfwq0jd7fjrxgc0k07x2sv3cf0lh4s6"] : ["bc1qakj552djms5p7gr3edp8we6rqaqqej970a2sal"];
 
 export const ALERT_EMPTY = "";
 export const ALERT_SUCCESS = "success";
