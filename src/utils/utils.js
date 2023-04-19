@@ -96,3 +96,11 @@ export const getShortAddress = (address, length = 4) => {
 export const useShortAddress = (address) => {
     return getShortAddress(address);
 }
+
+export const getShortBtcAddress = (address, length = 4) => {
+    return address && [address.substr(0, length), address.substr(address.length - length, length)].join("...");
+}
+
+export const useShortBTCAddress = (address) => {
+    return getShortBtcAddress(address);
+}

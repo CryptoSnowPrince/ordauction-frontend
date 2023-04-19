@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import Breakpoint, { BreakpointProvider, setDefaultBreakpoints } from "react-socks";
 import { useDispatch, useSelector } from "react-redux";
 import { validate } from "uuid";
+import { CopyToClipboard } from 'react-copy-to-clipboard';
 
 import { Popover, Transition } from "@headlessui/react";
 import { ChevronDownIcon } from "@heroicons/react/20/solid";
@@ -10,7 +11,7 @@ import { ChevronDownIcon } from "@heroicons/react/20/solid";
 import * as actions from "../../store/actions";
 import * as selectors from "../../store/selectors";
 
-import { axiosGet, axiosPost, getBTCfromSats, setInscriberId, useShortAddress } from "../../utils/utils";
+import { axiosGet, axiosPost, getBTCfromSats, setInscriberId, useShortAddress, useShortBTCAddress } from "../../utils/utils";
 import { ADMIN_ADDRESS, ALERT_ERROR, ALERT_SUCCESS, ALERT_WARN, MESSAGE_LOGIN, SUCCESS } from "../../utils/constants";
 
 // import NotificationModal from "../Notification/NotificationModal";
@@ -36,6 +37,7 @@ const Header = () => {
     const user = useSelector(selectors.getUserState);
     const isAdmin = ADMIN_ADDRESS.indexOf(user.address) != -1;
     const userProfile = useSelector(selectors.getUserProfile);    
+    const shortBtcAccount = useShortBTCAddress(userProfile.btcAccount);
     const shortAddress = useShortAddress(user.address);
 
     const notifications = useSelector(selectors.getNotifications);
@@ -122,6 +124,13 @@ const Header = () => {
       navigate("/admin");
     }
 
+    const onCopyToClipboard = () => {
+      dispatch(actions.setAlertMessage({
+        type: ALERT_SUCCESS,
+        message: `Copied ${userProfile.btcAccount} to the clipboard.`
+      }))
+    }
+
     return (
     <header id="myHeader" className="top-0 left-0 flex items-center w-full py-4 bg-white">
       <div className="flex items-center justify-end py-2 px-8 w-full">
@@ -170,18 +179,24 @@ const Header = () => {
                   <Popover.Panel className="absolute right-0 z-10 mt-3 w-[220px] sm:w-[350px] max-w-sm transform px-4 sm:px-0 lg:max-w-3xl">
                     <div className="overflow-hidden rounded-lg shadow-lg ring-1 ring-black ring-opacity-5">
                       <div className="bg-gray-50 p-2">
-                        <div
-                          className="flow-root cursor-pointer rounded-md px-2 py-2 transition duration-150 ease-in-out hover:bg-gray-100 focus:outline-none focus-visible:ring focus-visible:ring-orange-500 focus-visible:ring-opacity-50"
-                        >
-                          <span className="flex items-center">
-                            <span className="text-sm font-medium text-gray-900">
-                              Wallet Account
+                        <CopyToClipboard text={userProfile.btcAccount} onCopy={() => onCopyToClipboard()}>
+                          <div
+                            className="flow-root cursor-pointer rounded-md px-2 py-2 transition duration-150 ease-in-out hover:bg-gray-100 focus:outline-none focus-visible:ring focus-visible:ring-orange-500 focus-visible:ring-opacity-50"
+                          >
+                            <span className="flex items-center">
+                              <span className="text-sm font-medium text-gray-900">
+                                Wallet Account
+                              </span>
                             </span>
-                          </span>
-                          <span className="block text-sm text-gray-500">
-                            {userProfile.btcAccount}
-                          </span>
-                        </div>
+                            
+                              <span className="hidden sm:block text-sm text-gray-500">
+                                {userProfile.btcAccount}
+                              </span>
+                              <span className="block sm:hidden text-sm text-gray-500">
+                                {shortBtcAccount}
+                              </span>                          
+                          </div>
+                        </CopyToClipboard>
                       </div>
                       <div className="bg-gray-50 p-2">
                         <div

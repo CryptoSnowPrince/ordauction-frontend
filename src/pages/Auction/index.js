@@ -270,7 +270,11 @@ const Auction = (props) => {
         </div>)
     }
 
-    return (<div className="Auction pb-4 min-h-[550px] flex justify-center">
+    return (<div className="Auction pb-4 min-h-[550px] flex flex-col justify-center">
+        <div className='flex justify-center py-4 text-2xl hint-text'>
+            1. Deposit the BTC to your account from the bitcoin wallet. <br/>
+            2. Place a bid to be the winner of new NFT.
+        </div>
         <div className="container flex flex-col md:flex-row justify-between">
             <div className="w-full">
                 <div className="image-wrapper p-4">
